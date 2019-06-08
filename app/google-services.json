@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "35196304844",
+    "firebase_url": "https://myfirebaseauth-f1350.firebaseio.com",
+    "project_id": "myfirebaseauth-f1350",
+    "storage_bucket": "myfirebaseauth-f1350.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35196304844:android:bf76516926faaa03",
+        "android_client_info": {
+          "package_name": "com.example.ioana.licenta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35196304844-kuf1it5hop0sbu9kkgcpnsqh7rqhtqlc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1_caRdWbcWsucBY9htmYqHQ1xTPszbNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35196304844-kuf1it5hop0sbu9kkgcpnsqh7rqhtqlc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
