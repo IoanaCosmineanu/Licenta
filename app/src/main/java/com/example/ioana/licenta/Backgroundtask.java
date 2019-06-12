@@ -4,9 +4,11 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -17,6 +19,8 @@ import java.net.URLEncoder;
 
 public class Backgroundtask extends AsyncTask<String,Void,String> {
 
+
+
     Context ctx;
     Backgroundtask(Context ctx){
 
@@ -26,12 +30,16 @@ public class Backgroundtask extends AsyncTask<String,Void,String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
     }
 
     @Override
     protected String doInBackground(String... params) {
         String insert_url="https://licentaioana1.000webhostapp.com/insert_retete.php";
         String method=params[0];
+
+
+
         if(method.equals("insert"))
         {
             String numereteta=params[1];
@@ -56,7 +64,12 @@ public class Backgroundtask extends AsyncTask<String,Void,String> {
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 OS.close();
+
+
+
                 InputStream IS=httpURLConnection.getInputStream();
+
+
                 IS.close();
                 return "Inserarea s-a efectuat cu succes!";
 

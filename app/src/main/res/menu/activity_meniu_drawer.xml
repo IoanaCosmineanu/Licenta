@@ -22,8 +22,8 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Trimite mai departe" />
+              android:icon="@drawable/ic_search_black_24dp"
+                android:title="Cauta o reteta" />
             <item
                 android:id="@+id/nav_feedback"
                 android:icon="@drawable/ic_feedback_black_24dp"
