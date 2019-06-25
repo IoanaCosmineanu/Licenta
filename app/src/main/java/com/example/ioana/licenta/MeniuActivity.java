@@ -16,7 +16,7 @@ import android.view.MenuItem;
 
 public class MeniuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+String currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,22 +24,23 @@ public class MeniuActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        Bundle bundle = getIntent().getExtras();
+        currentUser = bundle.getString("UtilizatorCurent");
 
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+           public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-            }
-        });
+           }
+      });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+       DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+               this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -96,7 +97,10 @@ public class MeniuActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_feedback) {
+            //Intent intent = new Intent(MeniuActivity.this, FeedbackActivity.class);
+            //startActivity(intent);
             Intent intent = new Intent(MeniuActivity.this, FeedbackActivity.class);
+            intent.putExtra("UtilizatorCurent", currentUser);
             startActivity(intent);
 
         } else if (id == R.id.itemadauga) {

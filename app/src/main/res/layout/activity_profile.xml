@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Bine ati venit!"
+            android:textSize="30sp"
             android:id="@+id/textViewUserEmail"
             android:layout_gravity="center_horizontal"
             />
@@ -29,6 +30,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
     android:text="Autentificare"
+    android:textSize="20sp"
+    android:background="@color/light_yellow"
     android:id="@+id/buttonLogout"
     android:layout_gravity="center_horizontal"
     />

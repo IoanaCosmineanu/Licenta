@@ -26,6 +26,7 @@ public class AnotherLoginActivity extends AppCompatActivity implements View.OnCl
    private EditText editTextPassword;
    private TextView textViewSignup;
 
+   private String _email = "";
    private FirebaseAuth firebaseAuth;
    private ProgressDialog progressDialog;
 
@@ -84,7 +85,7 @@ public class AnotherLoginActivity extends AppCompatActivity implements View.OnCl
         //we will first show a progressbar
         progressDialog.setMessage("Autentificare utilizator...");
         progressDialog.show();
-
+        _email = email;
         firebaseAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -92,9 +93,13 @@ public class AnotherLoginActivity extends AppCompatActivity implements View.OnCl
             progressDialog.dismiss();
             if(task.isSuccessful())
             {
+
                 //start the profile activity
                 finish();
-                startActivity(new Intent(getApplicationContext(),MeniuActivity.class));
+                Intent intent = new Intent(getApplicationContext(), MeniuActivity.class);
+                intent.putExtra("UtilizatorCurent", _email);
+                startActivity(intent);
+                //startActivity(new Intent(getApplicationContext(),MeniuActivity.class));
             }
                     }
                 });

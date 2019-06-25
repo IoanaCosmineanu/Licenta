@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="75dp">
+
+    
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/tx_numereteta"
+        android:layout_alignParentLeft="true"
+        android:text="Ioana"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+
+        />
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/tx_nr"
+        android:layout_toRightOf="@+id/tx_numereteta"
+        android:text="Ioana"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+
+        />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/tx_elemente"
+        android:layout_toRightOf="@+id/tx_nr"
+        android:text="Ioana"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+
+        />
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/tx_instructiuni"
+        android:layout_toRightOf="@+id/tx_elemente"
+        android:text="Ioana"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+
+        />
+    
+    
+</RelativeLayout>

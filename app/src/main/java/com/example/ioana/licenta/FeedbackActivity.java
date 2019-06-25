@@ -3,12 +3,14 @@ package com.example.ioana.licenta;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -18,6 +20,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
@@ -27,187 +30,182 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 
 public class FeedbackActivity extends AppCompatActivity {
-/*
 
-    private SeekBar mSeekBar;
-    private TextView mTextView;
-    private RatingBar mRatingBar;
-    private EditText mTitluReteta;
+    EditText Et_titlu, Et_text;
+    RatingBar ratingBar;
+    String titlu;
+    String text;
+    String rating;
+    String categorie;
 
-
-    public String url;
-
-
-    private static final String TITLU_RETETA= "reteta";
-    private static final String SEEK = "seek";
-    private static final String RATING = "rating";
-    private static final int REQ_CODE_CAMERA = 1;
-    private static final int REQ_OPEN_GALERY = 144;
-    private FirebaseFirestore mFireStore;
-
+    String ok = "0";
+String utilizator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
-        initView();
-        initFireStore();
 
-        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                mTextView.setText("Evaluare " + "( " + progress + " )");
-            }
+        Et_titlu = (EditText) findViewById(R.id.et_numereteta);
+        Et_text = (EditText) findViewById(R.id.textfeed);
+        ratingBar = (RatingBar) findViewById(R.id.rating_bar);
+        //Bundle bundle = getIntent().getExtras();
+       // utilizator = bundle.getString("UtilizatorCurent");
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
 
     }
 
-    private void initView() {
-        mSeekBar = findViewById(R.id.seek_bar);
-        mTextView = findViewById(R.id.text_view_evaluare);
-        mTitluReteta = findViewById(R.id.idcategorie);
-        mRatingBar = findViewById(R.id.rating_bar);
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch (view.getId()) {
+            case R.id.desertradio:
+                if (checked) {
+                    ok = "1";
+                    categorie = ok;
+                    Toast.makeText(FeedbackActivity.this, "S-a selectat categoria Desert", Toast.LENGTH_SHORT).show();
+
+                    break;
+                }
+
+            case R.id.felprincipalradio:
+                if (checked) {
+                    ok = "2";
+                    categorie = ok;
+                    Toast.makeText(FeedbackActivity.this, "S-a selectat categoria Fel Principal", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+
+            case R.id.superadio:
+                if (checked) {
+                    ok = "3";
+                    categorie = ok;
+                    Toast.makeText(FeedbackActivity.this, "S-a selectat categoria Supe", Toast.LENGTH_SHORT).show();
+                    break;
+
+                }
+        }
     }
 
-    private void initFireStore() {
-        mFireStore = FirebaseFirestore.getInstance();
-    }
+    public class Backgroundtask extends AsyncTask<String, Void, String> {
 
+        Context ctx;
 
-    public static String getTITLU_RETETA() {
-        return TITLU_RETETA;
-    }
+        Backgroundtask(Context ctx) {
 
-    public static String getSEEK() {
-        return SEEK;
-    }
-
-    public static String getRATING() {
-        return RATING;
-    }
-
-    public void btnSave(View view) {
-
-        if (mTripName != null && mDestination != null) {
-            String nume_trip = mTripName.getText().toString();
-            String destinatie = mDestination.getText().toString();
-            double rating = mRatingBar.getRating();
-            int seekbar = mSeekBar.getProgress();
-            if (!nume_trip.isEmpty() && !destinatie.isEmpty()) {
-
-                Intent intent = new Intent(this, Drawer.class);
-
-
-
-                Feed feed = new Feed(nume_trip, destinatie, url, rating, seekbar);
-
-
-                mFireStore.collection("TRIPS").document(nume_trip).set(feed).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(FeedbackActivity.this, "Adaugat", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(FeedbackActivity.this, "Nu s-a putut efectua adaugarea", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-                startActivity(intent);
-
-                System.out.println("A mers");
-            } else {
-                Toast.makeText(this, "Completeaza campurile", Toast.LENGTH_LONG).show();
-            }
+            this.ctx = ctx;
         }
 
 
-    }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
-    @TargetApi(Build.VERSION_CODES.M)
+        @Override
+        protected String doInBackground(String... params) {
+            String insertfeed_url;
+
+            insertfeed_url = "https://licentaioana1.000webhostapp.com/feedback.php";
+
+            String method = params[0];
+            if (method.equals("insertfeed")) {
+
+                String titlu = params[1];
+                String categorie = params[2];
+                String text = params[3];
+                String rating = params[4];
+                String utilizator = params[5];
+
+                try {
+                    URL url = new URL(insertfeed_url);
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    httpURLConnection.setRequestMethod("POST");
+                    httpURLConnection.setDoOutput(true);
+                    OutputStream OS = httpURLConnection.getOutputStream();
+                    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
+
+                    String data = URLEncoder.encode("titlu", "UTF-8") + "=" + URLEncoder.encode(titlu, "UTF-8") + "&" +
+                            URLEncoder.encode("categorie", "UTF-8") + "=" + URLEncoder.encode(categorie, "UTF-8") + "&" +
+                            URLEncoder.encode("text", "UTF-8") + "=" + URLEncoder.encode(text, "UTF-8") + "&" +
+                            URLEncoder.encode("rating", "UTF-8") + "=" + URLEncoder.encode(rating, "UTF-8") + "&" +
+                            URLEncoder.encode("utilizator", "UTF-8") + "=" + URLEncoder.encode(utilizator, "UTF-8");
+
+
+                    bufferedWriter.write(data);
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
+                    OS.close();
+                    InputStream IS = httpURLConnection.getInputStream();
+                    IS.close();
+                    return "Inserarea s-a efectuat cu succes!";
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            return null;
+
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+
+            Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
+
+
+        }
+    }
     public void btnStartCamera(View view) {
-        if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.CAMERA},
-                    REQ_CODE_CAMERA);
-        } else {
-            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                startActivityForResult(takePictureIntent, REQ_CODE_CAMERA);
-            }
-        }
+
+        Toast.makeText(this,utilizator,Toast.LENGTH_LONG).show();
     }
 
 
     public void btnOpenGalery(View view) {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-
-        intent.setType("image/*");
-
-        startActivityForResult(intent.createChooser(intent, "Select"), REQ_OPEN_GALERY);
     }
 
+    public void insertfeed(View view) {
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQ_OPEN_GALERY) {
-            if (resultCode == Activity.RESULT_OK) {
-                Uri uri = data.getData();
-                try {
-                    InputStream inputStream = getContentResolver().openInputStream(uri);
-                    Bitmap recivedImage = BitmapFactory.decodeStream(inputStream);
-                    BitMapToString(recivedImage);
 
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (resultCode == Activity.RESULT_CANCELED) {
-                finishActivity(REQ_CODE_CAMERA);
-            }
-        }
-        if (requestCode == REQ_CODE_CAMERA) {
-            if (resultCode == RESULT_OK) {
-                Bundle extras = data.getExtras();
-                Bitmap imagebitmap = (Bitmap) extras.get("data");
-                BitMapToString(imagebitmap);
-            }
-            if (resultCode == RESULT_CANCELED) {
-                finishActivity(REQ_OPEN_GALERY);
-            }
+        if (ok == "0")
+            Toast.makeText(FeedbackActivity.this, "Selecteaza categoria", Toast.LENGTH_SHORT).show();
+
+        else {
+
+            titlu = Et_titlu.getText().toString();
+            text = Et_text.getText().toString();
+            rating = String.valueOf(ratingBar.getRating());
+            Bundle bundle = getIntent().getExtras();
+            utilizator = bundle.getString("UtilizatorCurent");
+
+            String method = "insertfeed";
+          Backgroundtask backgroundtask = new Backgroundtask(this);
+           backgroundtask.execute(method, titlu, categorie, text, rating, utilizator);
+            finish();
         }
     }
 
-    public String BitMapToString(Bitmap bitmap) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] b = baos.toByteArray();
-        url = Base64.encodeToString(b, Base64.DEFAULT);
-        return url;
-    }
 
-    public String getUrl() {
-        return url;
-    }
-    */
 }
-
 

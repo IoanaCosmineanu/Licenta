@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "35196304844-083i8e2r4k0g05udgsqg9m9opnf624b9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ioana.licenta",
+            "certificate_hash": "2b4279a178f4e260aa76483bf9bcbaa1d10942c4"
+          }
+        },
+        {
           "client_id": "35196304844-kuf1it5hop0sbu9kkgcpnsqh7rqhtqlc.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -20,6 +20,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Inregistrare utilizator"
+        android:textSize="25sp"
+
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal" />
 
@@ -27,6 +29,7 @@
         android:layout_margin="15dp"
         android:inputType="textEmailAddress"
         android:hint="Adresa ta email"
+        android:textSize="20sp"
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -35,6 +38,7 @@
         android:layout_margin="15dp"
         android:inputType="textPassword"
         android:hint="Parola"
+        android:textSize="20sp"
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -43,12 +47,17 @@
         android:layout_margin="15dp"
         android:id="@+id/buttonSignup"
         android:text="Inregistreaza"
+       android:textSize="20sp"
+        android:layout_marginBottom="@dimen/space_32"
+        android:background="@color/light_yellow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:textAlignment="center"
         android:text="Utilizator deja inregistrat? Autentificare aici"
+       android:textSize="20sp"
+        android:layout_marginTop="@dimen/space_16"
         android:id="@+id/textViewSignin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

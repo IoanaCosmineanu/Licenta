@@ -4,8 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/condimente"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MeniuActivity"
     tools:showIn="@layout/app_bar_meniu">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAlignment="center"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Retete delicioase cu ingredientele tale preferate"
+        android:textSize="50sp"
+        android:textColor="@color/light_yellow"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:paddingTop="@dimen/space_128"
+        />
+
+
+</LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
