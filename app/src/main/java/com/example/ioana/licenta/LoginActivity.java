@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(firebaseAuth.getCurrentUser() !=null){
             finish();
-            startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+            startActivity(new Intent(getApplicationContext(),AnotherLoginActivity.class));
             // profile activity here
 
         }

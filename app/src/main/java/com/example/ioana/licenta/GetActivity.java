@@ -174,19 +174,7 @@ public class GetActivity extends AppCompatActivity {
         }
     }
 
-    public void salveaza(View view) {
 
-        if (ok == 0)
-            Toast.makeText(GetActivity.this, "Selecteaza categoria", Toast.LENGTH_SHORT).show();
-
-        else {
-
-            ing1 = ET_Ingredient1.getText().toString();
-            ing2 = ET_Ingredient2.getText().toString();
-        }
-
-
-    }
 
     public void onCheckboxClicked(View view) {
 

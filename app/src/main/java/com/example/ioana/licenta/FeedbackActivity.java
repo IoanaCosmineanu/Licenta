@@ -59,9 +59,10 @@ String utilizator;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
 
-        Et_titlu = (EditText) findViewById(R.id.et_numereteta);
+        Et_titlu = (EditText) findViewById(R.id.idtitlu);
         Et_text = (EditText) findViewById(R.id.textfeed);
         ratingBar = (RatingBar) findViewById(R.id.rating_bar);
+
         //Bundle bundle = getIntent().getExtras();
        // utilizator = bundle.getString("UtilizatorCurent");
 
@@ -100,6 +101,10 @@ String utilizator;
 
                 }
         }
+    }
+
+    public void getfeed(View view) {
+
     }
 
     public class Backgroundtask extends AsyncTask<String, Void, String> {
@@ -182,6 +187,7 @@ String utilizator;
 
 
     public void btnOpenGalery(View view) {
+        startActivity(new Intent(this,GetFeedbackActivity.class));
 
     }
 
@@ -194,6 +200,7 @@ String utilizator;
         else {
 
             titlu = Et_titlu.getText().toString();
+            categorie=ok;
             text = Et_text.getText().toString();
             rating = String.valueOf(ratingBar.getRating());
             Bundle bundle = getIntent().getExtras();

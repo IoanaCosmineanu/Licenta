@@ -77,7 +77,9 @@ String currentUser;
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent=new Intent(MeniuActivity.this, LoginActivity.class);
+            startActivity(intent);
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -94,7 +96,6 @@ String currentUser;
             Intent intent=new Intent(MeniuActivity.this, CameraActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_feedback) {
             //Intent intent = new Intent(MeniuActivity.this, FeedbackActivity.class);

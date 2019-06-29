@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_yellow"
     tools:context=".InsertData">
 
     <LinearLayout
@@ -17,15 +18,19 @@
     android:layout_weight="1"
     android:orientation="vertical"
     android:layout_marginTop="@dimen/space_16">
-
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Alege categoria"
+    android:gravity="center_horizontal"
+    android:textSize="20sp"/>
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
 
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="32dp"
             android:layout_marginBottom="12dp"
             android:text="Desert"
             android:textSize="15sp"
@@ -34,7 +39,7 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
@@ -47,11 +52,10 @@
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
             android:background="@color/colorPrimaryDark"
             android:layout_marginBottom="16dp"
             android:text="Supe"
@@ -121,9 +125,11 @@
             android:layout_marginTop="28dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:background="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
             android:onClick="insertdata"
             android:text="Adauga reteta"
+            android:textSize="15sp"
            />
 
     </LinearLayout>

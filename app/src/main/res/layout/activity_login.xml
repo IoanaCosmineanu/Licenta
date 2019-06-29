@@ -21,7 +21,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Inregistrare utilizator"
         android:textSize="25sp"
-
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal" />
 

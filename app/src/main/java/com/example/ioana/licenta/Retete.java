@@ -1,6 +1,8 @@
 package com.example.ioana.licenta;
 
-public class Retete {
+import java.io.Serializable;
+
+public class Retete implements Serializable {
 
     private String numereteta,nr,elemente,instructiuni;
 
@@ -18,10 +20,12 @@ public class Retete {
 
 
     public String getNumereteta() {
+
         return numereteta;
     }
 
     public void setNumereteta(String numereteta) {
+
         this.numereteta = numereteta;
     }
 
@@ -47,6 +51,11 @@ public class Retete {
 
     public void setInstructiuni(String instructiuni) {
         this.instructiuni = instructiuni;
+    }
+
+    @Override
+    public String toString() {
+        return "Titlu: "+this.numereteta+"\n"+"Numar ingrediente: "+this.nr+"\n"+"Ingrediente: "+ this.elemente ;
     }
 }
 
