@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/light_yellow"
     android:layout_height="match_parent"
     tools:context=".GetFeedbackActivity">
 
@@ -12,15 +13,25 @@
         android:orientation="vertical">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/space_16"
             android:layout_height="wrap_content"
             android:onClick="getJSONfeed"
-            android:text="aratafeedback"
+            android:background="@color/colorPrimaryDark"
+            android:text="1. Obtine lista feedback-uri"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="parseJSONfeed"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="@dimen/space_32"
+            android:text="2. Afiseaza lista feedback-uri"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="aici feed"
+
             android:textSize="20sp"
             android:layout_marginTop="@dimen/space_64"
             android:layout_marginLeft="@dimen/space_128"

@@ -36,6 +36,7 @@ public class DisplayListView extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Get the selected item text from ListView
+
                 Retete selectedItem = (Retete) parent.getItemAtPosition(position);
                 String s = selectedItem.toString();
                 Intent i = new Intent(DisplayListView.this,RetetaDetailsActivity.class);
@@ -47,6 +48,9 @@ public class DisplayListView extends AppCompatActivity {
             }
         });
 
+
+
+
         json_string=getIntent().getExtras().getString("json_data");
 
         try {
@@ -57,7 +61,8 @@ public class DisplayListView extends AppCompatActivity {
             jsonArray  = new JSONObject(json_string).getJSONArray("server_response");
        int count=0;
 
-            String numereteta,nr,elemente,instructiuni;
+            String numereteta;
+          String nr,elemente,instructiuni;
 
        while(count<jsonArray.length())
        {
@@ -65,10 +70,11 @@ JSONObject JO=jsonArray.getJSONObject(count);
 
         numereteta=JO.getString("numereteta");
         nr=JO.getString("nr");
-        elemente=JO.getString("elemente");
-        instructiuni=JO.getString("instructiuni");
+       elemente=JO.getString("elemente");
+       instructiuni=JO.getString("instructiuni");
 
-        Retete retete=new Retete(numereteta,nr,elemente,instructiuni);
+       Retete retete=new Retete(numereteta,nr,elemente,instructiuni);
+           //Retete retete=new Retete(numereteta);
 
       retetaAdapter.add(retete);
 

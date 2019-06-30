@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_yellow"
     android:padding="10dp"
     android:paddingLeft="@dimen/space_16"
     android:paddingRight="@dimen/space_16"
     android:paddingTop="@dimen/space_16"
-    android:background="@color/light_yellow"
     android:paddingBottom="@dimen/space_16"
-    tools:context=".DisplayListView">
-
+    tools:context=".ListFeed">
 
 
     <ListView
@@ -19,7 +18,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listview"
-
         />
-
-    </RelativeLayout>
+</RelativeLayout>

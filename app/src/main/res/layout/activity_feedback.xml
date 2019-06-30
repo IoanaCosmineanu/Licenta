@@ -58,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:onClick="onRadioButtonClicked"
                 android:text="Desert"
-                android:textSize="20sp"
+                android:textSize="15sp"
 
                 />
 
@@ -68,7 +68,7 @@
                 android:layout_height="match_parent"
                 android:onClick="onRadioButtonClicked"
                 android:text="Fel principal"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
 
             <RadioButton
                 android:id="@+id/superadio"
@@ -76,7 +76,7 @@
                 android:layout_height="match_parent"
                 android:onClick="onRadioButtonClicked"
                 android:text="Supe"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
         </RadioGroup>
     </LinearLayout>
 
@@ -123,74 +123,34 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Galerie foto"
-                android:textSize="20sp"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SELECT"
+                android:onClick="insertfeed"
                 android:background="@color/light_yellow"
-                android:onClick="btnStartCamera"/>
+                android:text="Salveaza" />
+
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Fa o fotografie"
-                android:textSize="20sp"
-                />
-
-            <Button
-                android:onClick="btnOpenGalery"
-                android:background="@color/light_yellow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="SELECT" />
-        </LinearLayout>
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+   android:orientation="vertical"
         android:padding="8dp">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="insertfeed"
+            android:onClick="feedback"
             android:background="@color/light_yellow"
-            android:text="Salveaza" />
+            android:text="Vezi feedback-uri anterioare" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="getfeed"
-            android:background="@color/light_yellow"
-            android:text="Arata feed" />
+
     </LinearLayout>
 
 </LinearLayout>

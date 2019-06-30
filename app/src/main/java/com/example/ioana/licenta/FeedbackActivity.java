@@ -102,11 +102,27 @@ String utilizator;
                 }
         }
     }
-
+/*
     public void getfeed(View view) {
 
     }
+*/
+    public void feedback(View view) {
+        startActivity(new Intent(this,GetFeedbackActivity.class));
+    }
 
+    /*
+        public void parseJSONfeed(View view) {
+            if (json_stringfeed == null) {
+                Toast.makeText(getApplicationContext(), "First get JSON", Toast.LENGTH_LONG).show();
+            } else {
+                Intent intent = new Intent(this, ListFeed.class);
+                intent.putExtra("json_data", json_stringfeed);
+                startActivity(intent);
+
+            }
+        }
+    */
     public class Backgroundtask extends AsyncTask<String, Void, String> {
 
         Context ctx;
@@ -180,16 +196,19 @@ String utilizator;
 
         }
     }
+    /*
     public void btnStartCamera(View view) {
 
         Toast.makeText(this,utilizator,Toast.LENGTH_LONG).show();
     }
 
-
+*/
+    /*
     public void btnOpenGalery(View view) {
         startActivity(new Intent(this,GetFeedbackActivity.class));
 
     }
+    */
 
     public void insertfeed(View view) {
 

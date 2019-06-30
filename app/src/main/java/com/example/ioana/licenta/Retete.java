@@ -8,11 +8,12 @@ public class Retete implements Serializable {
 
 
     public Retete(String numereteta,String nr,String elemente,String instructiuni)
+   // public Retete(String numereteta)
 
     {
      this.setNumereteta(numereteta);
      this.setNr(nr);
-     this.setElemente(elemente);
+    this.setElemente(elemente);
      this.setInstructiuni(instructiuni);
     }
 
@@ -55,7 +56,7 @@ public class Retete implements Serializable {
 
     @Override
     public String toString() {
-        return "Titlu: "+this.numereteta+"\n"+"Numar ingrediente: "+this.nr+"\n"+"Ingrediente: "+ this.elemente ;
+        return "Titlu: "+this.numereteta+"\n"+"\n"+"Ingrediente: "+ this.elemente +"\n"+"\n"+"Mod de preparare: "+this.instructiuni ;
     }
 }
 

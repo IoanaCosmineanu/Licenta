@@ -1,5 +1,6 @@
 package com.example.ioana.licenta;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +26,7 @@ public class GetActivity extends AppCompatActivity {
     EditText ET_Ingredient1, ET_Ingredient2;
     String ing1, ing2;
 
-
+    private ProgressDialog progressDialog;
     String json_string;
    // Button desert, fel, supe;
     int ok = 0;
@@ -39,7 +40,7 @@ public class GetActivity extends AppCompatActivity {
 
         ET_Ingredient1 = (EditText) findViewById(R.id.et_ing1);
         ET_Ingredient2 = (EditText) findViewById(R.id.et_ing2);
-
+        progressDialog = new ProgressDialog(this);
 
       //  desert = (Button) findViewById(R.id.button2);
       //  fel = (Button) findViewById(R.id.button3);
@@ -49,10 +50,12 @@ public class GetActivity extends AppCompatActivity {
 
 
     public void getJSON(View view) {
+
         if (ok == 0)
             Toast.makeText(GetActivity.this, "Selecteaza categoria", Toast.LENGTH_SHORT).show();
         else {
-
+            progressDialog.setMessage("Dupa incarcare, apasa butonul '2'");
+            progressDialog.show();
             new BackgroundTask().execute();
 
         }
@@ -154,16 +157,17 @@ public class GetActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            TextView textView = (TextView) findViewById(R.id.txtview);
-            textView.setText(result);
+          //  TextView textView = (TextView) findViewById(R.id.txtview);
+          //  textView.setText(result);
             json_string = result;
-
+            progressDialog.dismiss();
         }
 
 
     }
 
     public void parseJSON(View view) {
+
         if (json_string == null) {
             Toast.makeText(getApplicationContext(), "First get JSON", Toast.LENGTH_LONG).show();
         } else {

@@ -31,7 +31,9 @@
         <activity android:name=".DisplayListView" />
         <activity android:name=".Photo" />
         <activity android:name=".GetFeedbackActivity" />
-        <activity android:name=".RetetaDetailsActivity"></activity>
+        <activity android:name=".RetetaDetailsActivity" />
+        <activity android:name=".FeedbackDetails" />
+        <activity android:name=".ListFeed"></activity>
     </application>
 
 </manifest>

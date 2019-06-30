@@ -53,9 +53,9 @@ public class RetetaAdapter extends ArrayAdapter {
          retetaHolder=new RetetaHolder();
 
             retetaHolder.tx_numereteta=(TextView) row.findViewById(R.id.tx_numereteta);
-            retetaHolder.tx_nr=(TextView) row.findViewById(R.id.tx_nr);
-            retetaHolder.tx_elemente=(TextView) row.findViewById(R.id.tx_elemente);
-            retetaHolder.tx_instructiuni=(TextView) row.findViewById(R.id.tx_instructiuni);
+          //  retetaHolder.tx_nr=(TextView) row.findViewById(R.id.tx_nr);
+          //  retetaHolder.tx_elemente=(TextView) row.findViewById(R.id.tx_elemente);
+          //  retetaHolder.tx_instructiuni=(TextView) row.findViewById(R.id.tx_instructiuni);
 
             row.setTag(retetaHolder);
         }
@@ -67,9 +67,10 @@ public class RetetaAdapter extends ArrayAdapter {
             Retete retete=(Retete) this.getItem(position);
 
             retetaHolder.tx_numereteta.setText(retete.getNumereteta());
-            retetaHolder.tx_nr.setText(retete.getNr());
-            retetaHolder.tx_elemente.setText(retete.getElemente());
-            retetaHolder.tx_instructiuni.setText(retete.getInstructiuni());
+
+          //  retetaHolder.tx_nr.setText(retete.getNr());
+         //   retetaHolder.tx_elemente.setText(retete.getElemente());
+          //  retetaHolder.tx_instructiuni.setText(retete.getInstructiuni());
 
         return row;
     }
@@ -77,6 +78,7 @@ public class RetetaAdapter extends ArrayAdapter {
 
     static  class RetetaHolder
     {
-            TextView tx_numereteta,tx_nr,tx_elemente,tx_instructiuni;
+            TextView tx_numereteta;
+     //  TextView tx_nr,tx_elemente,tx_instructiuni;
     }
 }
